@@ -54,7 +54,7 @@ class SubjectController extends Controller
         $subject->practical_marks = $input['practical_marks'];
         $subject->save();
         $subject->grades()->attach($input['grades_id']);
-        return 'bhayo';
+        return redirect('/subject/index');
     }
 
     /**
@@ -65,7 +65,8 @@ class SubjectController extends Controller
      */
     public function show($id)
     {
-        //
+        dd($id);
+        $gradeSubject = Expense::findOrFail($id);
     }
 
     /**
@@ -76,7 +77,9 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $allgrades = Grade::all();
+        $subject=Subject::find($id);
+        return view('subject.edit', compact('allgrades','subject','id'));
     }
 
     /**
@@ -88,7 +91,12 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subject= Subject::findorfail($id);
+        $input = $request->all();
+        $meroid = $input['grades_id'];
+        $subject->update($input);
+        $subject->grades()->sync($meroid);
+        return redirect('subject/index');
     }
 
     /**
@@ -99,6 +107,8 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $subject= Subject::findorfail($id);
+        $subject->delete();
+        $subject->grades()->detach();
+        return redirect('subject/index');     }
 }

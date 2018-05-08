@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -42,12 +42,12 @@
                                         {{$ss->class_no}}
                                         @endforeach
                                        </td>
-                                    <td><a href="{{action('SubjectController@edit', $subject->id)}}" class="btn btn-warning">Edit</a></td>
+                                    <td><a href="{{action('SubjectController@edit', $subject->id)}}" class="btn btn-warning"><i class="far fa-edit"></i></a></td>
                                     <td>
                                         <form action="{{action('SubjectController@destroy', $subject->id)}}" method="post">
                                             @csrf
                                             <input name="_method" type="hidden" value="DELETE">
-                                            <button class="btn btn-danger" onclick="return confirm('Are you Sure?')" type="submit">Delete</button>
+                                            <button class="btn btn-danger" onclick="return confirm('Are you Sure?')" type="submit"><i class="far fa-trash-alt"></i></button>
                                         </form>
 
                                     </td>

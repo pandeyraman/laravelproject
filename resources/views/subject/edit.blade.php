@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -51,6 +51,15 @@
 
                                 <input type="text" class="form-control" id="practical_marks" name="practical_marks"  value="{{$subject ->practical_marks}}" placeholder="Practical Marks" required>
 
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Class No</label>
+                                <select class="form-control" id="grades_id"
+                                        name="grades_id" >
+                                    @foreach($allgrades as $grade)
+                                        <option value="{{$grade->id}}">{{$grade->class_no}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary text-center">Update</button>

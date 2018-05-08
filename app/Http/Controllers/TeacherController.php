@@ -8,6 +8,7 @@ use App\Teacher;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class TeacherController extends Controller
 {
@@ -54,26 +55,39 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+
+        $grade = $input['grades_id'];
+        $subject = $input['subjects_id'];
         $teacher = new  Teacher();
-        $teacher->teacher_name = $input['teacher_name'];
-        $teacher->address = $input['address'];
-        $teacher->email = $input['email'];
-        $teacher->contact = $input['contact'];
+//        $checkGrade = Grade::where('id','=',$grade);
+        $checkSubject = Subject::where('id','=',$subject)->first();
+//        if($checkSubject == null) {
+            $teacher->teacher_name = $input['teacher_name'];
+            $teacher->address = $input['address'];
+            $teacher->email = $input['email'];
+            $teacher->contact = $input['contact'];
 
-        $user = new User();
-        $pass = 'abc123';
-        $role = "teacher";
-        $user->name = $teacher->teacher_name;
-        $user->email = $teacher->email;
-        $user->password = Hash::make($pass);
-        $user->role = $role;
-        $user->save();
+            $user = new User();
+            $pass = 'abc123';
+            $role = "teacher";
+            $user->name = $teacher->teacher_name;
+            $user->email = $teacher->email;
+            $user->password = Hash::make($pass);
+            $user->role = $role;
+            $user->save();
 
-        $teacher->save();
-        $teacher->grades()->attach($input['grades_id']);
-        $teacher->subjects()->attach($input['subjects_id']);
+            $teacher->save();
+            $teacher->grades()->attach($input['grades_id']);
+            $teacher->subjects()->attach($input['subjects_id']);
+//        }
+//        else{
+//                Session::flash('status', 'Subject Already Assigned Exists!');
+//            }
+
         return redirect('/teacher/index');
+
     }
+
 
     /**
      * Display the specified resource.
@@ -94,7 +108,8 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        //
+       //
+
     }
 
     /**
@@ -106,7 +121,11 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $teacher= Teacher::findorfail($id);
+        $input = $request->all();
+        $student->update($input);
+        $student->grades()->sync($request->input('grades_id'));
+        return redirect('student/index');
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Grade;
 use App\Student;
+use App\StudentMarks;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -58,7 +59,7 @@ class StudentController extends Controller
         $student->roll_no = $input['roll_no'];
         $student->save();
         $student->grades()->attach($input['grades_id']);
-        return 'bhayo';
+        return redirect('/student/index');
 
 
     }
@@ -82,7 +83,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $allgrades = Grade::all();
+        $student=Student::find($id);
+        return view('student.edit', compact('allgrades','student','id'));
     }
 
     /**
@@ -93,8 +96,14 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
+
     {
-        //
+        $student= Student::findorfail($id);
+        $input = $request->all();
+        $student->update($input);
+        $student->grades()->sync($request->input('grades_id'));
+        return redirect('student/index');
+
     }
 
     /**
@@ -105,6 +114,14 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+        $student->grades()->detach();
+        return redirect('student/index');
+    }
+
+    public function showmarks($id){
+        $studentmarks = StudentMarks::where('students_id','=',$id)->get();
+        return view('student.show',compact('studentmarks'));
     }
 }

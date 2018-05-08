@@ -12,4 +12,7 @@ class StudentMarks extends Model
       'subjects_id',
         'marks',
     ];
+    public function subjects(){
+        return $this->belongsTo(Subject::class,'subjects_id','id');
+    }
 }

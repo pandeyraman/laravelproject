@@ -15,12 +15,12 @@
                         <p>Welcome {{Auth::user()->name}}</p>
                     </div>
 
-                Please enter marks for Subject : {{$subject->subject_name}}
+                    <p class="text-xl-center">Please enter marks for Subject : {{$subject->subject_name}}</p>
 
                     <form action="/submit/marks" method="post">
                         @csrf
                         <input type="hidden" name="subject_id" value="{{$subject->id}}">
-                    <table class="table">
+                        <table class="table table-bordered table-striped table-hover ">
                         <tr><td>
                                 Roll No:
                             </td>

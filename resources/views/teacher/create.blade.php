@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
     <div class="container-fluid">
@@ -65,7 +65,7 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Class No</label>
+                                    <label for="name">Class Subjects</label>
                                     <select class="form-control" id="subjects_id"
                                             name="subjects_id" >
                                         @foreach($grades->subjects as $grade)

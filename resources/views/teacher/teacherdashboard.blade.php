@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.user')
 
 @section('content')
     <div class="container">
@@ -41,7 +41,7 @@
                                         @endforeach
                                         @foreach($teacher->subjects as $bb)
                                             <?php $subject = $bb->subject_name;
-                                            $subject_id = $bb->id;
+                                                $subject_id = $bb->id;
                                             ?>
                                         @endforeach
 

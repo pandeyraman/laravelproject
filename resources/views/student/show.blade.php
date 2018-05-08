@@ -1,7 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: raman
- * Date: 5/3/18
- * Time: 10:24 PM
- */
+@foreach($studentmarks as $studentmark)
+    {{$studentmark->marks}}
+    {{$studentmark->subjects()->student_name}}
+@endforeach

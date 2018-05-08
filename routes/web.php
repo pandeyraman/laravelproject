@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('auth/login');
 });
 
@@ -52,6 +52,7 @@ Route::group(['middleware'=>['auth','admin']],function (){
 Route::get('/teacherdashboard','TeacherDashboardController@index')->name('teacherdashboard');
 Route::get('view/grade/{id}/{gid}','TeacherDashboardController@showgradestudents');
 Route::post('/submit/marks','TeacherDashboardController@savemarks');
+Route::get('/students/marks/{id}','StudentController@showmarks');
 
 Auth::routes();
 

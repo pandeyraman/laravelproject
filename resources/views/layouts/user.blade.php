@@ -16,7 +16,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -24,7 +24,7 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/home') }}">
+            <a class="navbar-brand" href="{{ url('/teacherdashboard') }}">
                 Marksheet Generator
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,21 +35,21 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('/home') }}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url('/teacherdashboard') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            View
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a href="{{route('student.index')}}" class="dropdown-item" >View Student</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="{{route('teacher.index')}}" class="dropdown-item" >View Teacher</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="{{route('subject.index')}}" class="dropdown-item" >View Subject</a>
-                            <div class="dropdown-divider"></div>
-                        </div>
-                    </li>
+                    {{--<li class="nav-item dropdown">--}}
+                        {{--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                            {{--View--}}
+                        {{--</a>--}}
+                        {{--<div class="dropdown-menu" aria-labelledby="navbarDropdown">--}}
+                            {{--<a href="{{route('student.index')}}" class="dropdown-item" >View Student</a>--}}
+                            {{--<div class="dropdown-divider"></div>--}}
+                            {{--<a href="{{route('teacher.index')}}" class="dropdown-item" >View Teacher</a>--}}
+                            {{--<div class="dropdown-divider"></div>--}}
+                            {{--<a href="{{route('subject.index')}}" class="dropdown-item" >View Subject</a>--}}
+                            {{--<div class="dropdown-divider"></div>--}}
+                        {{--</div>--}}
+                    {{--</li>--}}
                 </ul>
             {{--@endif--}}
             <!-- Right Side Of Navbar -->

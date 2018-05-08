@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.master')
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -13,7 +12,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                            <form method="post" action="{{action('StudentController@update', $id)}}}">
+                            <form method="post" action="{{action('StudentController@update',$id)}}}">
                                 {{csrf_field()}}
                                 <input name="_method" type="hidden" value="PATCH">
                             <div class="form-group">
@@ -35,7 +34,7 @@
                                 <div class="form-group">
                                     <label for="name">Class No</label>
                                     <select class="form-control" id="class_no_id"
-                                            name="class_no_id"  noSelection="['':'--Select Class--']" >
+                                            name="grades_id"  noSelection="['':'--Select Class--']" >
                                         @foreach($allgrades as $grade)
                                             <option value="{{$grade->id}}">{{$grade->class_no}}</option>
                                         @endforeach

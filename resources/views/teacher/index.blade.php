@@ -1,10 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-
+                    @if (session('status'))
+                        <div class="alert alert-danger">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <div class="card-header">
                         <div class="text-right"> <a href="{{route('teacher.create')}}" class="btn btn-primary text-right">Add New Teacher</a></div>
                     </div>

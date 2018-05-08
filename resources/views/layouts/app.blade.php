@@ -37,22 +37,10 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ url('/home') }}">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                View
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a href="{{route('student.index')}}" class="dropdown-item" >View Student</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="{{route('teacher.index')}}" class="dropdown-item" >View Teacher</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="{{route('subject.index')}}" class="dropdown-item" >View Subject</a>
-                                <div class="dropdown-divider"></div>
-                            </div>
-                        </li>
+                        {{--<li class="nav-item">--}}
+                            {{--<a class="nav-link" href="#">Link</a>--}}
+                        {{--</li>--}}
+
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
